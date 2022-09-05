@@ -1,0 +1,9 @@
+{
+    "build": {
+        "target": "."
+    },
+
+    "hana" : {
+          "deploy-format": "hdbtable"
+    }     
+}
