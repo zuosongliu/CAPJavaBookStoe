@@ -19,3 +19,11 @@ cds:
             firstName: Mia
             lastName: Bonnellac
             email: Mia.Bonnellac@mail.com
+        - name: sabine
+          password: pass_sabine
+          roles:
+            - Administrators
+          additional:
+            firstName: Sabine
+            lastName: Autumnpike
+            email: Sabine.Autumnpike@mail.com            
