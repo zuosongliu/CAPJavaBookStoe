@@ -1,13 +1,22 @@
 namespace sap.capire.bookstore;
 
-using { Currency, cuid, managed }      from '@sap/cds/common';
-using { sap.capire.products.Products } from '@sap/capire-products';
+using { Currency, cuid, managed,sap.common.CodeList }      from '@sap/cds/common';
 
-entity Books as projection on Products; extend Products with {
+entity Books:cuid,managed {
     // Note: we map Books to Products to allow reusing AdminService as is
+    title    : localized String(111);
+    descr    : localized String(1111);
+    stock    : Integer;
+    price    : Decimal(9,2);
+    currency : Currency;
     author : Association to Authors;
+    category : Association to Categories;
 }
-
+entity Categories : CodeList {
+    key ID   : Integer;
+    parent   : Association to Categories;
+    children : Composition of many Categories on children.parent = $self;
+}
 entity Authors : cuid {
     firstname : String(111);
     lastname  : String(111);
