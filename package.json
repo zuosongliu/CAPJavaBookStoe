@@ -9,5 +9,21 @@
     },
     "devDependencies": {
         "@sap/hdi-deploy": "^4.4.1"
+    },
+    "cds": {
+        "requires": {
+            "[production]": {
+                "db": {
+                    "kind": "hana-cloud"
+                },
+                "auth":{
+                    "kind":"xsuaa"
+                }
+            },
+            "db": {
+                "kind": "sql"
+            }
+        }
     }
+
 }
