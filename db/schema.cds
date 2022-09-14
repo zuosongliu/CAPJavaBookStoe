@@ -3,7 +3,7 @@ namespace sap.capire.bookstore;
 using { Currency, cuid, managed,sap.common.CodeList }      from '@sap/cds/common';
 
 entity Books:cuid,managed {
-    // Note: we map Books to Products to allow reusing AdminService as is
+    // Note: we map Books to Products to allow reusing AdminService as is 
     title    : localized String(111);
     descr    : localized String(1111);
     stock    : Integer;
