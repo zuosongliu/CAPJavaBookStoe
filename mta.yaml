@@ -29,11 +29,10 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: bookstore-hdi-container
-      - name: bookstore-xsuaa
+      - name: bookstore-db
+      - name: bookstore-auth
 
-  - name: bookshop-db
-# -----------------------------------------------------------
+  - name: bookstore-db-deployer
     type: nodejs
     path: db
     parameters:
@@ -45,16 +44,17 @@ modules:
       - name: hdi-deploy
         command: npm run start
     requires:
-      # Set user and password to secure rest API via basic authentication
-      - name: bookstore-hdi-container
+      - name: bookstore-db
 
 resources:
-  - name: bookstore-hdi-container
+  - name: bookstore-db
     type: org.cloudfoundry.managed-service
     parameters:
       service: hana
       service-plan: hdi-shared
-  - name: bookstore-xsuaa
+    properties:
+      hdi-service-name: ${service-name}
+  - name: bookstore-auth
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
